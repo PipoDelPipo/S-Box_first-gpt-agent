@@ -1,0 +1,78 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Wger Free Exercise API",
+    "version": "1.0.0",
+    "description": "Бесплатный API упражнений без авторизации — Wger"
+  },
+  "servers": [
+    {
+      "url": "https://wger.de/api/v2"
+    }
+  ],
+  "paths": {
+    "/exercise": {
+      "get": {
+        "operationId": "getExercises",
+        "summary": "Получить упражнения (с фильтрами)",
+        "parameters": [
+          {
+            "name": "language",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "2"
+            },
+            "description": "Язык упражнений (2 — английский)"
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "example": 10
+            },
+            "description": "Категория упражнений"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Список упражнений"
+          }
+        }
+      }
+    },
+    "/muscle": {
+      "get": {
+        "operationId": "getMuscles",
+        "summary": "Получить список мышц",
+        "responses": {
+          "200": {
+            "description": "Список мышц"
+          }
+        }
+      }
+    },
+    "/exerciseimage": {
+      "get": {
+        "operationId": "getExerciseImages",
+        "summary": "Изображения упражнений",
+        "parameters": [
+          {
+            "name": "exercise",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "ID упражнения"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Список изображений упражнения"
+          }
+        }
+      }
+    }
+  }
+}
